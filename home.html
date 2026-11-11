@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jenny – Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Urbanist", "system-ui", "sans-serif"] },
+            colors: {
+              brand: "#FF7A2F",
+              arch: "#FDB074",
+              slate: "#33405B",
+              ink: "#1E1E1E",
+              soft: "#F3F3F3",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* circular cut-out in the bottom-right corner of the service images */
+      .notch {
+        -webkit-mask-image: radial-gradient(
+          circle at calc(100% - 32px) calc(100% - 32px),
+          transparent 40px,
+          #000 41px
+        );
+        mask-image: radial-gradient(
+          circle at calc(100% - 32px) calc(100% - 32px),
+          transparent 40px,
+          #000 41px
+        );
+      }
+      .service-notch {
+        -webkit-mask-image: radial-gradient(
+          circle at calc(100% - 50px) calc(100% - 50px),
+          transparent 58px,
+          #000 59px
+        );
+        mask-image: radial-gradient(
+          circle at calc(100% - 50px) calc(100% - 50px),
+          transparent 58px,
+          #000 59px
+        );
+      }
+      .service-card {
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.16),
+          rgba(255, 255, 255, 0.07) 48%,
+          rgba(255, 255, 255, 0.025)
+        );
+        -webkit-backdrop-filter: blur(18px) saturate(130%);
+        backdrop-filter: blur(18px) saturate(130%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+      /* portrait overflows the orange shape at the top/sides but follows its rounded bottom corners */
+      .portrait-mask {
+        -webkit-mask:
+          linear-gradient(#000 0 0) 0 0/100% calc(100% - 100px) no-repeat,
+          radial-gradient(
+            circle 100px at 159px calc(100% - 100px),
+            #000 99.5px,
+            transparent 100px
+          ),
+          radial-gradient(
+            circle 100px at 368px calc(100% - 100px),
+            #000 99.5px,
+            transparent 100px
+          ),
+          linear-gradient(#000 0 0) 159px 100%/209px 100px no-repeat;
+        mask:
+          linear-gradient(#000 0 0) 0 0/100% calc(100% - 100px) no-repeat,
+          radial-gradient(
+            circle 100px at 159px calc(100% - 100px),
+            #000 99.5px,
+            transparent 100px
+          ),
+          radial-gradient(
+            circle 100px at 368px calc(100% - 100px),
+            #000 99.5px,
+            transparent 100px
+          ),
+          linear-gradient(#000 0 0) 159px 100%/209px 100px no-repeat;
+      }
+    </style>
+  </head>
+  <body class="min-w-[1280px] font-sans text-ink bg-white antialiased">
+    <!-- ===== HEADER + HERO ===== -->
+    <header class="mx-auto max-w-[1300px] px-4 pt-0 pl-14 pr-2">
+      <nav
+        class="flex h-[86px] items-center justify-between rounded-full border border-white/80 bg-[#141414] p-1.5 text-white"
+        aria-label="Main"
+      >
+        <ul class="flex items-center gap-6">
+          <li>
+            <a
+              href="#"
+              class="block rounded-full bg-brand px-[40px] py-[20px] text-base font-bold"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block px-[40px] py-[20px] text-base hover:text-brand"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="block px-[40px] py-[20px] text-base hover:text-brand"
+              >Service</a
+            >
+          </li>
+        </ul>
+
+        <a href="#" class="flex items-center gap-3">
+          <img
+            src="./assets/Frame 55.png"
+            alt="JCREA logo"
+            class="h-9 w-9 rounded-full object-contain"
+          />
+          <span class="text-xl font-extrabold tracking-wide">JCREA</span>
+        </a>
+
+        <ul class="flex items-center gap-6">
+          <li>
+            <a
+              href="#experience"
+              class="block px-[40px] py-[20px] text-base hover:text-brand"
+              >Resume</a
+            >
+          </li>
+          <li>
+            <a
+              href="#portfolio"
+              class="block px-[40px] py-[20px] text-base hover:text-brand"
+              >Project</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block px-[40px] py-[20px] text-base hover:text-brand"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="relative mx-auto max-w-[1280px] px-4 h-[778px] pt-[88px]">
+      <!-- heading -->
+      <div class="relative z-10 text-center translate-x-[15px]">
+        <div class="relative inline-block">
+          <span
+            class="inline-block rounded-full border border-ink bg-white px-5 py-1.5 text-base font-semibold"
+            >Hello!</span
+          >
+          <!-- sparkle strokes -->
+          <img
+            src="./assets/Vector 1.png"
+            alt=""
+            aria-hidden="true"
+            class="absolute -right-8 -top-5 h-9 w-9 object-contain"
+          />
+        </div>
+        <h1 class="mt-4 text-[72px] font-semibold leading-none tracking-tight">
+          I’m <span class="text-brand">Jenny,</span><br />Product Designer
+        </h1>
+      </div>
+
+      <!-- left decor stroke (desktop) -->
+      <img
+        src="./assets/Vector 2.png"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute left-[330px] top-[270px] h-20 w-20 block object-contain"
+      />
+
+      <!-- arch + portrait + CTA -->
+      <div
+        class="z-20 mx-auto w-full absolute inset-x-0 bottom-0 mt-0 h-[636px] max-w-none"
+      >
+        <img
+          src="./assets/Frame 57.png"
+          alt="Jenny, product designer"
+          class="absolute bottom-[-24px] left-[calc(50%_+_12px)] -translate-x-1/2 object-contain h-[610px] w-[900px]"
+        />
+
+        <div
+          class="absolute left-[calc(50%_+_12px)] z-30 flex -translate-x-1/2 items-center whitespace-nowrap rounded-full border border-brand/40 bg-white/10 backdrop-blur-md bottom-10 p-[10px]"
+        >
+          <a
+            href="#portfolio"
+            class="flex items-center gap-2 rounded-full bg-brand px-[20px] py-[10px] text-xl font-semibold text-white"
+          >
+            Portfolio
+            <img
+              src="./assets/up right.png"
+              alt=""
+              aria-hidden="true"
+              class="object-contain h-[42px] w-[42px]"
+            />
+          </a>
+          <a href="#contact" class="px-6 text-xl text-white/80">Hire me</a>
+        </div>
+      </div>
+
+      <!-- quote + stats -->
+      <div class="flex items-start justify-between gap-6 mt-0">
+        <div class="absolute left-14 top-[378px]">
+          <img
+            src="./assets/quote-up.png"
+            alt=""
+            aria-hidden="true"
+            class="h-[36px] w-[36px] object-contain"
+          />
+          <p
+            class="mt-5 max-w-[328px] text-xl font-medium leading-[100%] text-slate"
+          >
+            Jenny’s Exceptional product design<br />ensure our website’s
+            success.<br />Highly Recommended
+          </p>
+        </div>
+        <div class="text-right absolute right-2 top-[380px]">
+          <span
+            class="ml-auto flex justify-end"
+            role="img"
+            aria-label="5 out of 5 stars"
+          >
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-[32px] w-[32px] object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-[32px] w-[32px] object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-[32px] w-[32px] object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-[32px] w-[32px] object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-[32px] w-[32px] object-contain"
+            />
+          </span>
+          <p class="mt-4 font-bold leading-[100%] text-[47px]">10 Years</p>
+          <p class="mt-[5px] text-xl font-normal">Experience</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section
+      id="services"
+      class="relative overflow-hidden rounded-[50px] bg-[#141414] text-white mx-auto max-w-[1440px]"
+    >
+      <!-- background texture and decorative 3D shapes -->
+      <img
+        src="./assets/57e2221906d547fa2080873389d5cdb526033110.jpg"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      />
+      <img
+        src="./assets/light-yellow-abstract-background-3d-illustration-3d-rendering 3.png"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute -left-10 top-[200px] w-[280px] block"
+      />
+      <img
+        src="./assets/light-yellow-abstract-background-3d-illustration-3d-rendering 2.png"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute left-[570px] top-[120px] w-[155px] block"
+      />
+      <img
+        src="./assets/light-yellow-abstract-background-3d-illustration-3d-rendering 3.png"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute -right-10 bottom-0 w-[300px] block [transform:scaleX(-1)]"
+      />
+
+      <div class="relative mx-auto max-w-[1136px] pb-[36px] pt-[100px]">
+        <div class="flex gap-4 flex-row items-center justify-between">
+          <h2 class="font-medium text-[46px] leading-[1.2]">
+            My <span class="text-brand">Services</span>
+          </h2>
+          <p class="max-w-[510px] font-medium leading-[26px] text-xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus
+            nunc, posuere in justo vulputate, bibendum sodales
+          </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-[22px] mt-[54px]">
+          <article
+            class="service-card rounded-t-[34px]"
+          >
+            <h3
+              class="flex h-[94px] items-center border-b border-white/30 px-[30px] text-[28px] font-medium"
+            >
+              UI/ UX Design
+            </h3>
+            <div class="relative mt-[80px]">
+              <!-- stacked layers behind the image -->
+              <span
+                class="absolute inset-x-11 -top-11 h-16 rounded-t-[40px] bg-white/30 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="absolute inset-x-6 -top-5 h-16 rounded-t-[40px] bg-white/45 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <img
+                src="./assets/Rectangle 7.png"
+                alt="UI/ UX Design preview"
+                class="service-notch relative block h-[268px] w-full rounded-[32px] bg-[#EEE6DF] object-cover"
+              />
+              <a
+                href="#"
+                aria-label="View UI/ UX Design"
+                class="absolute bottom-0 right-0 grid h-[100px] w-[100px] place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[72px] w-[72px] object-contain"
+                />
+              </a>
+            </div>
+          </article>
+          <article
+            class="service-card rounded-t-[34px]"
+          >
+            <h3
+              class="flex h-[94px] items-center border-b border-white/30 px-[30px] text-[28px] font-medium"
+            >
+              Web Design
+            </h3>
+            <div class="relative mt-[80px]">
+              <!-- stacked layers behind the image -->
+              <span
+                class="absolute inset-x-11 -top-11 h-16 rounded-t-[40px] bg-white/30 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="absolute inset-x-6 -top-5 h-16 rounded-t-[40px] bg-white/45 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <img
+                src="./assets/Rectangle 7(1).png"
+                alt="Web Design preview"
+                class="service-notch relative block h-[268px] w-full rounded-[32px] bg-[#EEE6DF] object-cover"
+              />
+              <a
+                href="#"
+                aria-label="View Web Design"
+                class="absolute bottom-0 right-0 grid h-[100px] w-[100px] place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[72px] w-[72px] object-contain"
+                />
+              </a>
+            </div>
+          </article>
+          <article
+            class="service-card rounded-t-[34px]"
+          >
+            <h3
+              class="flex h-[94px] items-center border-b border-white/30 px-[30px] text-[28px] font-medium"
+            >
+              Landing Page
+            </h3>
+            <div class="relative mt-[80px]">
+              <!-- stacked layers behind the image -->
+              <span
+                class="absolute inset-x-11 -top-11 h-16 rounded-t-[40px] bg-white/30 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="absolute inset-x-6 -top-5 h-16 rounded-t-[40px] bg-white/45 backdrop-blur-md"
+                aria-hidden="true"
+              ></span>
+              <img
+                src="./assets/Rectangle 7(2).png"
+                alt="Landing Page preview"
+                class="service-notch relative block h-[268px] w-full rounded-[32px] bg-[#EEE6DF] object-cover"
+              />
+              <a
+                href="#"
+                aria-label="View Landing Page"
+                class="absolute bottom-0 right-0 grid h-[100px] w-[100px] place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[72px] w-[72px] object-contain"
+                />
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- slider dots -->
+        <div
+          class="mt-[34px] flex items-center justify-center gap-[10px]"
+          aria-hidden="true"
+        >
+          <span class="h-3.5 w-[54px] rounded-full bg-brand"></span>
+          <span class="h-3.5 w-3.5 rounded-full bg-white/90"></span>
+          <span class="h-3.5 w-3.5 rounded-full bg-white/90"></span>
+          <span class="h-3.5 w-3.5 rounded-full bg-white/90"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== EXPERIENCE ====== -->
+    <section
+      id="experience"
+      class="mx-auto max-w-[1298px] px-0 pb-[130px] pt-20"
+    >
+      <h2
+        class="text-center font-semibold leading-[1.1] text-slate text-[64px]"
+      >
+        My <span class="text-brand">Work Experince</span>
+      </h2>
+
+      <ol class="mt-[81px]">
+        <li class="grid h-[180px] pb-0 grid-cols-[1.083fr_46px_1fr] gap-x-0">
+          <div class="relative row-start-1 col-start-2 row-span-1">
+            <span
+              class="absolute -bottom-[23px] left-1/2 top-[23px] w-[3px] -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,#2F3B52_0_4px,transparent_4px_8px)]"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="relative z-10 grid h-[46px] w-[46px] place-items-center rounded-full border-2 border-dashed border-[#1C2841] bg-white"
+              aria-hidden="true"
+              ><i class="h-9 w-9 rounded-full bg-brand"></i
+            ></span>
+          </div>
+          <div class="row-start-1 col-start-1">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              Cognizant, Mumbai
+            </h3>
+            <p class="mt-2.5 text-[#9AA3B6] text-[22px] leading-7">
+              Sep 2016- July 2020
+            </p>
+          </div>
+          <div class="col-start-3 row-start-1 mt-0 pl-[157px]">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              Experince Designer
+            </h3>
+            <p
+              class="mt-2.5 max-w-[443px] text-lg font-semibold leading-[26px] text-[#9AA3B6]"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+              lacus nunc, posuere in justo vulputate, bibendum sodales
+            </p>
+          </div>
+        </li>
+        <li class="grid h-[180px] pb-0 grid-cols-[1.083fr_46px_1fr] gap-x-0">
+          <div class="relative row-start-1 col-start-2 row-span-1">
+            <span
+              class="absolute -bottom-[23px] left-1/2 top-[23px] w-[3px] -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,#2F3B52_0_4px,transparent_4px_8px)]"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="relative z-10 grid h-[46px] w-[46px] place-items-center rounded-full border-2 border-dashed border-[#1C2841] bg-white"
+              aria-hidden="true"
+              ><i class="h-9 w-9 rounded-full bg-[#1C2841]"></i
+            ></span>
+          </div>
+          <div class="row-start-1 col-start-1">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              Sugee Pvt limited, Mumbai
+            </h3>
+            <p class="mt-2.5 text-[#9AA3B6] text-[22px] leading-7">
+              Sep 2020- July 2023
+            </p>
+          </div>
+          <div class="col-start-3 row-start-1 mt-0 pl-[157px]">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              UI/UX Designer
+            </h3>
+            <p
+              class="mt-2.5 max-w-[443px] text-lg font-semibold leading-[26px] text-[#9AA3B6]"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+              lacus nunc, posuere in justo vulputate, bibendum sodales
+            </p>
+          </div>
+        </li>
+        <li class="grid pb-0 grid-cols-[1.083fr_46px_1fr] gap-x-0">
+          <div class="relative row-start-1 col-start-2 row-span-1">
+            <span
+              class="relative z-10 grid h-[46px] w-[46px] place-items-center rounded-full border-2 border-dashed border-[#1C2841] bg-white"
+              aria-hidden="true"
+              ><i class="h-9 w-9 rounded-full bg-brand"></i
+            ></span>
+          </div>
+          <div class="row-start-1 col-start-1">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              Cinetstox, Mumbai
+            </h3>
+            <p class="mt-2.5 text-[#9AA3B6] text-[22px] leading-7">Sep 2023</p>
+          </div>
+          <div class="col-start-3 row-start-1 mt-0 pl-[157px]">
+            <h3 class="font-semibold leading-[46px] text-slate text-[38px]">
+              Lead UX Designer
+            </h3>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== WHY HIRE ME ===== -->
+    <section class="rounded-[50px] bg-[#F2F4F8] mx-auto max-w-[1440px]">
+      <div
+        class="mx-auto grid max-w-[1298px] items-center grid-cols-[603px_1fr] gap-0 px-0 pb-[103px] pt-[110px]"
+      >
+        <div class="mx-0 ml-[21px] h-[593px] w-[573px]">
+          <div class="relative h-[593px] w-[573px] origin-top-left scale-100">
+            <img
+              src="./assets/Frame 75.png"
+              alt="Jenny pointing at the text"
+              class="absolute inset-0 h-full w-full object-contain"
+            />
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-bold leading-[1.1] text-slate text-[64px]">
+            Why <span class="text-brand">Hire me</span>?
+          </h2>
+          <p class="max-w-[440px] leading-[26px] text-[#9AA3B6] text-xl mt-11">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus
+            nunc, posuere in justo vulputate, bibendum sodales
+          </p>
+
+          <dl class="grid max-w-[706px] grid-cols-2 mt-[50px]">
+            <div>
+              <dd class="font-semibold leading-tight text-[#1C2841] text-4xl">
+                450+
+              </dd>
+              <dt class="mt-2.5 text-[#6B7691] text-xl">Project Completed</dt>
+            </div>
+            <div>
+              <dd class="font-semibold leading-tight text-[#1C2841] text-4xl">
+                450+
+              </dd>
+              <dt class="mt-2.5 text-[#6B7691] text-xl">Project Completed</dt>
+            </div>
+          </dl>
+
+          <a
+            href="#contact"
+            class="grid place-items-center rounded-[28px] border border-ink font-semibold text-ink transition hover:bg-ink hover:text-white mt-[47px] h-[108px] w-[232px] rounded-[32px] text-[30px]"
+            >Hire me</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PORTFOLIO ================= -->
+    <section
+      id="portfolio"
+      class="mx-auto max-w-[1298px] px-0 pb-[95px] pt-[89px]"
+    >
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="font-semibold leading-[1.28] text-slate text-[64px]">
+          Lets have a look at<br />my <span class="text-brand">Portfolio</span>
+        </h2>
+        <a
+          href="#"
+          class="grid shrink-0 place-items-center rounded-full bg-brand font-semibold text-white h-[66px] w-[144px] text-[22px]"
+          >See All</a
+        >
+      </div>
+
+      <div class="grid gap-6 grid-cols-2 mt-[42px]">
+        <article
+          class="relative overflow-hidden rounded-[28px] bg-[#EAEAEA] h-[371px]"
+        >
+          <img
+            src="./assets/b0eb65dcdb6082da906fde33327b458268159d80.png"
+            alt="Lirante landing page preview"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute inset-y-0 left-0 w-[60px] bg-gradient-to-r from-black/15 to-transparent"
+            aria-hidden="true"
+          ></div>
+          <a
+            href="#"
+            aria-label="Open Lirante project"
+            class="absolute right-2.5 top-2.5 grid h-16 w-16 place-items-center rounded-full border border-brand text-brand"
+          >
+            <img
+              src="./assets/up right.png"
+              alt=""
+              aria-hidden="true"
+              class="h-8 w-8 object-contain"
+            />
+          </a>
+          <p
+            class="absolute bottom-4 left-[22px] font-bold leading-none text-white text-[64px]"
+          >
+            Lirante
+          </p>
+        </article>
+        <article
+          class="relative overflow-hidden rounded-[28px] bg-[#EAEAEA] h-[371px]"
+        >
+          <img
+            src="./assets/b0eb65dcdb6082da906fde33327b458268159d80.png"
+            alt="Lirante landing page preview"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute inset-y-0 left-0 w-[60px] bg-gradient-to-r from-black/15 to-transparent"
+            aria-hidden="true"
+          ></div>
+          <a
+            href="#"
+            aria-label="Open Lirante project"
+            class="absolute right-2.5 top-2.5 grid h-16 w-16 place-items-center rounded-full border border-brand text-brand"
+          >
+            <img
+              src="./assets/up right.png"
+              alt=""
+              aria-hidden="true"
+              class="h-8 w-8 object-contain"
+            />
+          </a>
+          <p
+            class="absolute bottom-4 left-[22px] font-bold leading-none text-white text-[64px]"
+          >
+            Lirante
+          </p>
+        </article>
+      </div>
+
+      <!-- slider dots-->
+      <div
+        class="flex items-center justify-center gap-[11px] mt-12"
+        aria-hidden="true"
+      >
+        <span class="h-[15px] w-[61px] rounded-full bg-brand"></span>
+        <span class="h-[15px] w-[15px] rounded-full bg-[#E5E9F0]"></span>
+        <span class="h-[15px] w-[15px] rounded-full bg-[#E5E9F0]"></span>
+        <span class="h-[15px] w-[15px] rounded-full bg-[#E5E9F0]"></span>
+      </div>
+
+      <ul class="flex flex-wrap justify-center gap-[15px] mt-12">
+        <li class="rounded-full bg-[#F2F4F8] px-8 py-[13px] text-slate text-xl">
+          Landing Page
+        </li>
+        <li class="rounded-full bg-[#F2F4F8] px-8 py-[13px] text-slate text-xl">
+          Product Design
+        </li>
+        <li class="rounded-full bg-[#F2F4F8] px-8 py-[13px] text-slate text-xl">
+          Animation
+        </li>
+        <li class="rounded-full bg-[#F2F4F8] px-8 py-[13px] text-slate text-xl">
+          Glassmorphism
+        </li>
+        <li class="rounded-full bg-[#F2F4F8] px-8 py-[13px] text-slate text-xl">
+          Cards
+        </li>
+      </ul>
+
+      <div class="mx-auto text-center mt-[51px]">
+        <h3
+          class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 font-semibold leading-[1.2] text-slate text-[46px]"
+        >
+          Lirante - Food Dilvery Solution
+          <a
+            href="#"
+            aria-label="Open Lirante project"
+            class="grid h-[58px] w-[58px] place-items-center rounded-full bg-brand text-white"
+          >
+            <img
+              src="./assets/up right.png"
+              alt=""
+              aria-hidden="true"
+              class="h-5 w-5 object-contain"
+            />
+          </a>
+        </h3>
+        <p class="mx-auto mt-5 max-w-[722px] leading-[26px] text-slate text-xl">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
+          interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Sed lobortis orci elementum egestas lobortis.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section
+      class="relative overflow-hidden rounded-[50px] bg-[#121212] text-white mx-auto max-w-[1440px]"
+    >
+      <!-- background texture -->
+      <img
+        src="./assets/57e2221906d547fa2080873389d5cdb526033110.jpg"
+        alt=""
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      />
+
+      <div class="relative pb-[186px] pt-[115px]">
+        <div class="relative mx-auto max-w-[722px] px-4 text-center">
+          <h2
+            class="relative inline-block font-semibold leading-[1.3] text-[48px]"
+          >
+            Testimonials That<br />Speak to
+            <span class="text-brand">My Results</span>
+            <img
+              src="./assets/Vector(2).png"
+              alt=""
+              aria-hidden="true"
+              class="absolute -right-9 -top-3 h-9 w-9 block object-contain"
+            />
+          </h2>
+          <p class="mt-2 leading-[26px] text-xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed congue
+            interdum ligula a dignissim. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Sed lobortis orci elementum egestas lobortis.
+          </p>
+          <!-- sparkles -->
+          <img
+            src="./assets/Vector(2).png"
+            alt=""
+            aria-hidden="true"
+            class="pointer-events-none absolute -left-4 top-[205px] h-7 w-7 block object-contain"
+          />
+          <img
+            src="./assets/Vector(2).png"
+            alt=""
+            aria-hidden="true"
+            class="pointer-events-none absolute -right-4 top-[115px] h-7 w-7 block object-contain"
+          />
+        </div>
+
+        <!--  carousel -->
+        <div class="flex justify-center gap-[26px] mt-[88px]">
+          <figure
+            class="relative w-[85vw] max-w-[782px] shrink-0 overflow-hidden rounded-[30px] border border-white/20 bg-gradient-to-br from-white/15 to-white/5 p-5 backdrop-blur-md"
+          >
+            <img
+              src="./assets/quote-up.png"
+              alt=""
+              aria-hidden="true"
+              class="absolute right-[23px] top-[27px] h-[95px] w-[108px] object-contain"
+            />
+            <div class="relative flex items-center gap-3">
+              <div>
+                <figcaption class="text-2xl font-medium leading-7">
+                  Jayesh Patil
+                </figcaption>
+                <p class="text-lg leading-6 text-white/80">CEO, Lirante</p>
+              </div>
+            </div>
+            <div class="relative mt-3 flex items-center gap-1.5 text-brand">
+              <span class="flex gap-1" role="img" aria-label="5 out of 5 stars">
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+              </span>
+              <span class="ml-1 text-2xl font-medium text-white">5.0</span>
+            </div>
+            <blockquote
+              class="relative mt-4 max-w-[722px] leading-[26px] text-white/90 text-xl"
+            >
+              consectetur adipiscing elit. Sed congue interdum ligula a
+              dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Sed lobortis orci elementum egestas lobortis.Sed lobortis
+              orci elementum egestas lobortis.Sed lobortis orci elementum
+              egestas lobortis.
+            </blockquote>
+          </figure>
+          <figure
+            class="relative w-[85vw] max-w-[782px] shrink-0 overflow-hidden rounded-[30px] border border-white/20 bg-gradient-to-br from-white/15 to-white/5 p-5 backdrop-blur-md"
+          >
+            <img
+              src="./assets/quote-up.png"
+              alt=""
+              aria-hidden="true"
+              class="absolute right-[23px] top-[27px] h-[95px] w-[108px] object-contain"
+            />
+            <div class="relative flex items-center gap-3">
+              <div>
+                <figcaption class="text-2xl font-medium leading-7">
+                  Jayesh Patil
+                </figcaption>
+                <p class="text-lg leading-6 text-white/80">CEO, Lirante</p>
+              </div>
+            </div>
+            <div class="relative mt-3 flex items-center gap-1.5 text-brand">
+              <span class="flex gap-1" role="img" aria-label="5 out of 5 stars">
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+              </span>
+              <span class="ml-1 text-2xl font-medium text-white">5.0</span>
+            </div>
+            <blockquote
+              class="relative mt-4 max-w-[722px] leading-[26px] text-white/90 text-xl"
+            >
+              consectetur adipiscing elit. Sed congue interdum ligula a
+              dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Sed lobortis orci elementum egestas lobortis.Sed lobortis
+              orci elementum egestas lobortis.Sed lobortis orci elementum
+              egestas lobortis.
+            </blockquote>
+          </figure>
+          <figure
+            class="relative w-[85vw] max-w-[782px] shrink-0 overflow-hidden rounded-[30px] border border-white/20 bg-gradient-to-br from-white/15 to-white/5 p-5 backdrop-blur-md"
+          >
+            <img
+              src="./assets/quote-up.png"
+              alt=""
+              aria-hidden="true"
+              class="absolute right-[23px] top-[27px] h-[95px] w-[108px] object-contain"
+            />
+            <div class="relative flex items-center gap-3">
+              <div>
+                <figcaption class="text-2xl font-medium leading-7">
+                  Jayesh Patil
+                </figcaption>
+                <p class="text-lg leading-6 text-white/80">CEO, Lirante</p>
+              </div>
+            </div>
+            <div class="relative mt-3 flex items-center gap-1.5 text-brand">
+              <span class="flex gap-1" role="img" aria-label="5 out of 5 stars">
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+                <img
+                  src="./assets/Star.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-[26px] w-[26px] object-contain"
+                />
+              </span>
+              <span class="ml-1 text-2xl font-medium text-white">5.0</span>
+            </div>
+            <blockquote
+              class="relative mt-4 max-w-[722px] leading-[26px] text-white/90 text-xl"
+            >
+              consectetur adipiscing elit. Sed congue interdum ligula a
+              dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Sed lobortis orci elementum egestas lobortis.Sed lobortis
+              orci elementum egestas lobortis.Sed lobortis orci elementum
+              egestas lobortis.
+            </blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FORM ===== -->
+    <section
+      class="mx-auto max-w-[1298px] text-center px-0 pb-[83px] pt-[88px]"
+    >
+      <h2 class="font-semibold text-slate text-[64px] leading-[84px]">
+        Have an Awsome Project<br />Idea?
+        <span class="text-brand">Let’s Discuss</span>
+      </h2>
+
+      <form
+        action="#"
+        method="post"
+        class="mx-auto mt-1 flex w-full max-w-[832px] items-center rounded-full border border-[#E5E7EB] bg-white p-[11px] pl-[14px] pr-[14px] gap-[17px]"
+      >
+        <span
+          class="grid shrink-0 place-items-center rounded-full bg-[#FFE8D4] text-brand h-16 w-16"
+          aria-hidden="true"
+        >
+          <img
+            src="./assets/sms.png"
+            alt=""
+            aria-hidden="true"
+            class="h-[22px] w-[26px] object-contain"
+          />
+        </span>
+        <label for="cta-email" class="sr-only">Email address</label>
+        <input
+          id="cta-email"
+          type="email"
+          name="email"
+          required
+          placeholder="Enter Email Address"
+          class="min-w-0 flex-1 bg-transparent text-black outline-none placeholder:text-black text-xl"
+        />
+        <button
+          type="submit"
+          class="shrink-0 rounded-full bg-brand font-medium text-white h-16 w-[126px] px-0 text-[22px]"
+        >
+          Send
+        </button>
+      </form>
+
+      <ul
+        class="mx-auto mt-[11px] flex max-w-[832px] items-center text-lg leading-[22px] text-[#1A1A1A] flex-row justify-between gap-4 px-8"
+      >
+        <li class="flex items-center gap-1">
+          <span class="flex gap-0.5" role="img" aria-label="4.9 out of 5 stars">
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+            />
+            <img
+              src="./assets/Star.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+            />
+          </span>
+          4.9/5 Average Ratings
+        </li>
+        <li class="flex items-center gap-1.5">
+          <img
+            src="./assets/award.png"
+            alt=""
+            aria-hidden="true"
+            class="h-5 w-[18px] object-contain"
+          />
+          25+ Winning Awards
+        </li>
+        <li class="flex items-center gap-1">
+          <img
+            src="./assets/shield-tick.png"
+            alt=""
+            aria-hidden="true"
+            class="h-5 w-5 object-contain"
+          />
+          Certified Product Designer
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== BANNER ===== -->
+    <div
+      class="relative overflow-hidden rounded-[28px] bg-[#FF6A1A] h-[147px] mx-auto max-w-[1440px]"
+      aria-hidden="true"
+    >
+      <div
+        class="absolute -left-[5%] top-1/2 w-[110%] [transform:translateY(calc(-50%+8px))_rotate(-1.9deg)]"
+      >
+        <div
+          class="flex items-center overflow-hidden whitespace-nowrap bg-white font-medium leading-none text-[#0A0A0A] gap-4 py-[11px] pl-12 text-5xl"
+        >
+          <span>UX Design</span>
+          <img
+            src="./assets/Star 3.png"
+            alt=""
+            aria-hidden="true"
+            class="shrink-0 h-[34px] w-[34px] object-contain"
+          />
+          <span>App Design</span>
+          <img
+            src="./assets/Star 3.png"
+            alt=""
+            aria-hidden="true"
+            class="shrink-0 h-[34px] w-[34px] object-contain"
+          />
+          <span>Dashboard</span>
+          <img
+            src="./assets/Star 3.png"
+            alt=""
+            aria-hidden="true"
+            class="shrink-0 h-[34px] w-[34px] object-contain"
+          />
+          <span>Wireframe</span>
+          <img
+            src="./assets/Star 3.png"
+            alt=""
+            aria-hidden="true"
+            class="shrink-0 h-[34px] w-[34px] object-contain"
+          />
+          <span>User Research</span>
+          <img
+            src="./assets/Star 3.png"
+            alt=""
+            aria-hidden="true"
+            class="shrink-0 h-[34px] w-[34px] object-contain"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BLOG ===== -->
+    <section class="mx-auto max-w-[1298px] px-0 pb-[110px] pt-[96px]">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="font-semibold text-slate text-[48px] leading-[63px]">
+          From my<br />blog post
+        </h2>
+        <a
+          href="#"
+          class="grid shrink-0 place-items-center rounded-full bg-brand font-semibold text-white h-[66px] w-[144px] text-[22px]"
+          >See All</a
+        >
+      </div>
+
+      <div class="grid gap-x-[26px] gap-y-14 mt-[49px] grid-cols-3">
+        <article>
+          <div class="[filter:drop-shadow(0_8px_24px_rgb(0_0_0/0.10))]">
+            <div class="relative">
+              <img
+                src="./assets/cebd2e330391b5d513e8fb3376b7d0776b4b88a4.jpg"
+                alt="Music player app UI design"
+                class="notch block w-full rounded-[44px] bg-[#8F8BE0] object-cover h-[432px]"
+              />
+              <a
+                href="#"
+                aria-label="Read: Design Unraveled: Behind the Scenes of UI/UX Magic"
+                class="absolute bottom-0 right-0 grid h-16 w-16 place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-6 w-6 object-contain"
+                />
+              </a>
+            </div>
+          </div>
+          <p
+            class="mt-9 inline-block rounded-full bg-[#F2F4F8] px-8 py-[13px] text-xl leading-[27px] text-slate"
+          >
+            UI/ UX Design
+          </p>
+          <p
+            class="mt-[33px] flex flex-wrap items-center gap-x-[35px] gap-y-2 text-xl leading-7 text-[#4B5568]"
+          >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i>Jayesh Patil</span
+            >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i
+              ><time>10 Nov, 2023</time></span
+            >
+          </p>
+          <h3 class="mt-8 font-normal text-slate text-[32px] leading-[42px]">
+            Design Unraveled: Behind the Scenes of UI/UX Magic
+          </h3>
+        </article>
+        <article>
+          <div class="[filter:drop-shadow(0_8px_24px_rgb(0_0_0/0.10))]">
+            <div class="relative">
+              <img
+                src="./assets/bcd22de6292281e732e3e55c8d5d32bf7a595deb.png"
+                alt="Sugee loan management dashboard"
+                class="notch block w-full rounded-[44px] bg-[#118E60] object-cover h-[432px]"
+              />
+              <a
+                href="#"
+                aria-label="Read: Sugee: Loan Management System for Rural Sector."
+                class="absolute bottom-0 right-0 grid h-16 w-16 place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-6 w-6 object-contain"
+                />
+              </a>
+            </div>
+          </div>
+          <p
+            class="mt-9 inline-block rounded-full bg-[#F2F4F8] px-8 py-[13px] text-xl leading-[27px] text-slate"
+          >
+            App Design
+          </p>
+          <p
+            class="mt-[33px] flex flex-wrap items-center gap-x-[35px] gap-y-2 text-xl leading-7 text-[#4B5568]"
+          >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i>Jayesh Patil</span
+            >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i
+              ><time>09 Oct, 2023</time></span
+            >
+          </p>
+          <h3 class="mt-8 font-normal text-slate text-[32px] leading-[42px]">
+            Sugee: Loan Management System for Rural Sector.
+          </h3>
+        </article>
+        <article>
+          <div class="[filter:drop-shadow(0_8px_24px_rgb(0_0_0/0.10))]">
+            <div class="relative">
+              <img
+                src="./assets/b0eb65dcdb6082da906fde33327b458268159d80.png"
+                alt="Cinetrade mobile app"
+                class="notch block w-full rounded-[44px] bg-[#FFB400] object-cover h-[432px]"
+              />
+              <a
+                href="#"
+                aria-label="Read: Cinetrade: Innovative way to invest in Digital Media"
+                class="absolute bottom-0 right-0 grid h-16 w-16 place-items-center rounded-full bg-[#1C2841]"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-6 w-6 object-contain"
+                />
+              </a>
+            </div>
+          </div>
+          <p
+            class="mt-9 inline-block rounded-full bg-[#F2F4F8] px-8 py-[13px] text-xl leading-[27px] text-slate"
+          >
+            App Design
+          </p>
+          <p
+            class="mt-[33px] flex flex-wrap items-center gap-x-[35px] gap-y-2 text-xl leading-7 text-[#4B5568]"
+          >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i>Jayesh Patil</span
+            >
+            <span class="flex items-center gap-[11px]"
+              ><i class="h-2 w-2 rounded-full bg-brand"></i
+              ><time>13 Aug, 2023</time></span
+            >
+          </p>
+          <h3 class="mt-8 font-normal text-slate text-[32px] leading-[42px]">
+            Cinetrade: Innovative way to invest in Digital Media
+          </h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact" class="bg-ink text-white">
+      <div class="mx-auto max-w-6xl py-14 px-8">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="text-3xl font-bold">Lets Connect there</h2>
+          <a
+            href="#"
+            class="inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2 text-xs font-semibold"
+            >Hire me
+            <img
+              src="./assets/up right.png"
+              alt=""
+              aria-hidden="true"
+              class="h-4 w-4 object-contain"
+          /></a>
+        </div>
+
+        <div class="mt-12 grid gap-10 grid-cols-[1.3fr_1fr_1fr_1.2fr]">
+          <div>
+            <a href="#" class="flex items-center gap-2 text-lg font-extrabold"
+              ><img
+                src="./assets/Frame 55.png"
+                alt="JCREA logo"
+                class="h-7 w-7 object-contain"
+              />
+              JCREA</a
+            >
+            <p class="mt-4 max-w-xs text-xs text-gray-300">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              congue interdum ligula a dignissim. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.
+            </p>
+            <ul class="mt-4 flex gap-3 text-xs text-gray-300">
+              <li>
+                <a href="#" aria-label="Facebook"
+                  ><img
+                    src="./assets/facebook.png"
+                    alt=""
+                    class="h-5 w-5 object-contain"
+                /></a>
+              </li>
+              <li>
+                <a href="#" aria-label="Instagram"
+                  ><img
+                    src="./assets/instagram.png"
+                    alt=""
+                    class="h-5 w-5 object-contain"
+                /></a>
+              </li>
+              <li>
+                <a href="#" aria-label="YouTube"
+                  ><img
+                    src="./assets/youtube.png"
+                    alt=""
+                    class="h-5 w-5 object-contain"
+                /></a>
+              </li>
+              <li>
+                <a href="#" aria-label="Twitter"
+                  ><img
+                    src="./assets/filled.png"
+                    alt=""
+                    class="h-5 w-5 object-contain"
+                /></a>
+              </li>
+            </ul>
+          </div>
+          <nav aria-label="Footer">
+            <h3 class="text-sm font-semibold text-brand">Navigation</h3>
+            <ul class="mt-3 space-y-2 text-xs text-gray-300">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#services">Service</a></li>
+              <li><a href="#experience">Resume</a></li>
+              <li><a href="#portfolio">Project</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h3 class="text-sm font-semibold text-brand">Contact</h3>
+            <ul class="mt-3 space-y-2 text-xs text-gray-300">
+              <li><a href="tel:+917738443636">+91 7738443636</a></li>
+              <li>
+                <a href="mailto:Joycrea36@gmail.com">Joycrea36@gmail.com</a>
+              </li>
+              <li>Portfolio-jcrea.com</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-brand">
+              Get the latest information
+            </h3>
+            <form
+              action="#"
+              method="post"
+              class="mt-3 flex items-center overflow-hidden rounded-md bg-white p-1"
+            >
+              <label for="ft-email" class="sr-only">Email address</label>
+              <input
+                id="ft-email"
+                type="email"
+                required
+                placeholder="Email Address"
+                class="min-w-0 flex-1 bg-transparent px-2 text-xs text-ink outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                class="grid h-8 w-8 place-items-center rounded bg-brand"
+              >
+                <img
+                  src="./assets/up right.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="h-4 w-4 object-contain"
+                />
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="mt-12 flex justify-between gap-2 border-t border-white/10 pt-5 text-[11px] text-gray-300 flex-row"
+        >
+          <p>Copyright© 2023 Joyesh. All Rights Reserved.</p>
+          <p>User Terms &amp; Conditions | Privacy Policy</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
